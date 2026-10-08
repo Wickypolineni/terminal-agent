@@ -8,3 +8,9 @@
 .venv/
 __pycache__/
 *.pyc
+
+# graphify: commit the graph and report, not local caches or machine paths
+graphify-out/cache/
+graphify-out/cost.json
+graphify-out/.graphify_python
+graphify-out/.graphify_root

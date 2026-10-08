@@ -132,7 +132,7 @@ tests/run_all.sh
 engine end to end on both providers (a scripted fake Anthropic API, and a local fake OpenRouter
 server speaking the real streaming protocol), hooks/skills/CLI, subagents (parallel, background, types,
 limits, hooks, approvals, cancel), the ACP server driven as a subprocess the way an app drives it, and the terminal/sudo prompt.
-**No test calls a real model** — the first live run is still to come.
+No test calls a real model, so the suite needs no API key. Live runs against real models on OpenRouter are recorded in [AUDIT.md](AUDIT.md) (section D).
 
 ## Files
 
@@ -149,6 +149,8 @@ limits, hooks, approvals, cancel), the ACP server driven as a subprocess the way
 | `shell.py`, `tools.py`, `http_tool.py`, `mcp_client.py` | The tools' implementations |
 
 Architecture and the Reflick/macOS handoff: **[HANDOFF.md](HANDOFF.md)**.
+
+For coding agents: start with **[AGENTS.md](AGENTS.md)**. A knowledge graph of the codebase (made with graphify) is in `graphify-out/`: `GRAPH_REPORT.md` to read, `graph.json` to query, and `graph.html` to explore in a browser.
 
 ## Known limits
 
