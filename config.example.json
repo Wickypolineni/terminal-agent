@@ -1,0 +1,46 @@
+{
+  "provider": "openrouter",
+  "model": "anthropic/claude-opus-5.5",
+  "effort": "high",
+  "subagent_effort": "medium",
+  "subagent_model": "",
+  "subagents": {"max_parallel": 4, "timeout_seconds": 900, "max_rounds": 40},
+  "agents": {
+    "log-reader": {
+      "description": "Digs through journalctl and /var/log for a problem and reports the evidence",
+      "prompt": "Find the log lines that explain the problem. Quote them exactly, with timestamps and unit names.",
+      "effort": "medium"
+    }
+  },
+  "openrouter": {
+    "api_key_env": "OPENROUTER_API_KEY",
+    "api_key_file": "~/.config/sysadmin-agent/openrouter.key",
+    "fallback_models": []
+  },
+  "anthropic_model": "claude-opus-5-5",
+
+  "mode": "ask",
+  "budget_usd_per_request": 5.0,
+  "command_timeout_seconds": 300,
+  "compact_at_tokens": 150000,
+  "rules": {
+    "allow": ["bash:git status*", "bash:git diff*", "bash:git log*", "bash:systemctl status *"],
+    "ask": [],
+    "deny": []
+  },
+  "hooks": {
+    "PreToolUse": [{"matcher": "bash", "command": "~/.config/sysadmin-agent/hooks/check-command.sh"}]
+  },
+  "credentials": {
+    "github": {
+      "env": "GITHUB_TOKEN",
+      "hosts": ["api.github.com"],
+      "header": "Authorization",
+      "format": "Bearer {value}"
+    }
+  },
+  "mcp_servers": {
+    "playwright": {"command": "npx", "args": ["-y", "@playwright/mcp@latest"]}
+  },
+  "shell_env_allow": []
+}

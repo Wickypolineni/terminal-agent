@@ -1,0 +1,4 @@
+anthropic[mcp]==1.12.1
+mcp==2.3.0
+httpx2==2.13.1
+agent-client-protocol==0.12.1
